@@ -2,14 +2,12 @@
 require 'optparse'
 require 'colorize'
 
-VERSION = '0.1.0'.freeze
-
 USAGE = 'Usage: echolor [options] [color] [text]'.freeze
 skip_newline = false
 
-def exit_msg msg, exit_code = 1
+def exit_with_msg msg
   puts msg
-  exit exit_code
+  exit 1
 end
 
 option_parser = OptionParser.new do |opts|
@@ -22,10 +20,6 @@ option_parser = OptionParser.new do |opts|
     skip_newline = true
   end
 
-  opts.on('-v', '--version', 'Displays version') do
-    exit_msg VERSION, 0
-  end
-
   opts.separator ''
 
   COLORS = String.colors.join("\n\t")
@@ -36,8 +30,8 @@ option_parser.parse!
 color = ARGV.first
 text = ARGV[1..-1].join(' ') rescue ''
 
-exit_msg option_parser.new if color.nil?
-exit_msg 'Error: Invalid color' unless String.colors.include? color.to_sym
+exit_with_msg option_parser.new if color.nil?
+exit_with_msg 'Error: Invalid color' unless String.colors.include? color.to_sym
 
 text += "\n" unless skip_newline
 print text.send color
