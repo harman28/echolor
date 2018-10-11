@@ -1,0 +1,8 @@
+language: ruby
+
+before_script:
+  - gem build echolor.gemspec
+  - gem install echolor-*.gem
+
+script:
+  - bash tests.sh
