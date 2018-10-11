@@ -1,0 +1,12 @@
+#
+# Language is Ruby cos we need gem installed for building the gem
+# After that, we run the tests from a script in Bash.
+#
+language: ruby
+
+before_script:
+  - gem build echolor.gemspec
+  - gem install echolor-*.gem
+
+script:
+  - bash tests.sh

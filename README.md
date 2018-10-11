@@ -1,4 +1,4 @@
-# echolor
+# echolor [![Build](https://api.travis-ci.org/harman28/echolor.svg?branch=master)](https://travis-ci.org/harman28/echolor)
 Echo with colour, meant for your command line.
 
 ### Wait what, does this really need to be a gem?
